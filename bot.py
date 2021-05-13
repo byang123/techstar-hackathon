@@ -133,7 +133,7 @@ def upload_pic(client, filename, channel_id):
     client.file_upload (
         channels=channel_id,
         initial_comment="Here's my monkey",
-        file=filename,
+        file=f"{DIR}/{filename}",
     )
 
 if __name__ == "__main__":
