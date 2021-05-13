@@ -4,7 +4,7 @@
 	"cat": "https://api.thecatapi.com/v1/images/search", 
 	"fox": "https://randomfox.ca/floof/", 
 	"bird": "https://some-random-api.ml/img/birb",
-	"panda": "https://some-random-api.al/img/panda", 
+	"panda": "https://some-random-api.ml/img/panda", 
 	"red-panda": "https://some-random-api.ml/img/red_panda",
 	"raccoon": "https://some-random-api.ml/img/raccoon", 
 	"koala": "https://some-random-api.ml/img/koala", 

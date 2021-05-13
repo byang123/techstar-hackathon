@@ -28,7 +28,7 @@ def post_animal(ack, say, body):
         ack()
         say(help())
         return
-    
+    print(body)
     command, *command_list = body['text'].lower().strip().split()
     
     if command == 'list': #list animals
@@ -57,7 +57,7 @@ def post_animal(ack, say, body):
     ack()
     pic_url = retrieve_pic(command, command_list)
     if command == "monkey":
-        upload_pic(client, pic_url, body["channel"])
+        upload_pic(client, pic_url, body["channel_id"])
     say(f'{pic_url}')    
 
 @bot.event("app_mention") #adding user images
@@ -121,8 +121,8 @@ def help(): #help message
     return help_msg
 
 def download_pic(input_url):
-    picture_type = input_url.split(".")[-1]
-    filename = f"monkey.{picture_type}"
+    #picture_type = input_url.split(".")[-1]
+    filename = f"monkey.webp"
     with open(f'{DIR}/{filename}', "wb") as f:
         picture = requests.get(input_url)
         f.write(picture.content)
@@ -130,7 +130,7 @@ def download_pic(input_url):
 
 
 def upload_pic(client, filename, channel_id):
-    client.file_upload (
+    client.files_upload (
         channels=channel_id,
         initial_comment="Here's my monkey",
         file=f"{DIR}/{filename}",
