@@ -29,7 +29,7 @@ def post_animal(ack, say, body):
         say(help())
         return
     
-    command, *command_list = body['text'].lower().split()
+    command, *command_list = body['text'].lower().strip().split()
     
     if command == 'list': #list animals
         ack()
@@ -56,6 +56,8 @@ def post_animal(ack, say, body):
     print(body['text']) #default case for each command
     ack()
     pic_url = retrieve_pic(command, command_list)
+    if command == "monkey":
+        upload_pic(client, pic_url, body["channel"])
     say(f'{pic_url}')    
 
 @bot.event("app_mention") #adding user images
@@ -85,12 +87,15 @@ def retrieve_pic(command, command_list): #retrieves animal pic of specified comm
     if not command in URL:
         return command + " is not a valid animal!" 
 
-    if len(command_list) < 1:
+    if command == 'monkey':
+        return download_pic(URL[command])
+
+    if len(command_list) < 1 or not command == 'dog':
         response = requests.get(URL[command])
     else:
         url1, url2 = URL[command+"-breed"].split("$")
         print(command_list)
-        req_url = url1 + command_list[0] + url2
+        req_url = url1 + "/".join(command_list.reverse()) + url2
         response = requests.get(req_url)
 
     if not response.status_code == 200:
@@ -105,8 +110,6 @@ def retrieve_pic(command, command_list): #retrieves animal pic of specified comm
         return f"<{response['image']}|{command}>"
     if command == 'lizard':
         return f"<{response['url']}|{command}>"
-    if command == 'monkey':
-        return f"<{response}|{command}>"
     if command in ['bird', 'panda', 'red-panda', 'koala', 'kangaroo', 'raccoon']:
         return f"<{response['link']}|{command}>"
 
@@ -117,12 +120,21 @@ def help(): #help message
 
     return help_msg
 
-# def download_pic(input_url):
-#     picture_type = input_url.split(".")[-1]
-#     filename = f"test.{picture_type}"
-#     with open(f'{DIR}/pictures/{filename}', "wb") as f:
-#         picture = requests.get(input_url)
-#         f.write(picture.content)
+def download_pic(input_url):
+    picture_type = input_url.split(".")[-1]
+    filename = f"monkey.{picture_type}"
+    with open(f'{DIR}/{filename}', "wb") as f:
+        picture = requests.get(input_url)
+        f.write(picture.content)
+    return filename
+
+
+def upload_pic(client, filename, channel_id):
+    client.file_upload (
+        channels=channel_id,
+        initial_comment="Here's my monkey",
+        file=filename,
+    )
 
 if __name__ == "__main__":
     bot.start(port=3000) # replace 3000 with the port ngrok is running on 
