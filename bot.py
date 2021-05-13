@@ -8,8 +8,10 @@ import random
 
 DIR = os.getcwd()
 
-SLACK_BOT_TOKEN='xoxb-2058685329925-2061997063155-gl7P31KMLiJ7z6syf41GX7ld' #MOVE THESE TO SOMEWHERE ELSE
-SLACK_SIGNING_SECRET='de1632abae87775684eb50f81a96598c'
+with open("secret.json", "r") as json_file:
+    all_secret = json.load(json_file)
+    SLACK_BOT_TOKEN=all_secret["SLACK_BOT_TOKEN"] 
+    SLACK_SIGNING_SECRET=all_secret["SLACK_SIGNING_SECRET"] 
 
 with open("user_images.json", 'r') as json_file:
     user_images = json.load(json_file)
