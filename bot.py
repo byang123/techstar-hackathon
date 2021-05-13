@@ -5,6 +5,7 @@ import requests
 import os
 import json
 import random
+from PIL import Image
 
 DIR = os.getcwd()
 
@@ -126,6 +127,9 @@ def download_pic(input_url):
     with open(f'{DIR}/{filename}', "wb") as f:
         picture = requests.get(input_url)
         f.write(picture.content)
+    im = Image.open(filename).convert("RGB")
+    filename = "monkey.png"
+    im.save(filename, "png")
     return filename
 
 
