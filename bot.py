@@ -95,7 +95,7 @@ def retrieve_pic(command, command_list): #retrieves animal pic of specified comm
     else:
         url1, url2 = URL[command+"-breed"].split("$")
         print(command_list)
-        req_url = url1 + "/".join(command_list.reverse()) + url2
+        req_url = url1 + "/".join(command_list[::-1]) + url2
         response = requests.get(req_url)
 
     if not response.status_code == 200:
