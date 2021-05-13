@@ -1,0 +1,14 @@
+{
+	"dog": "https://dog.ceo/api/breeds/image/random", 
+	"dog-breed": "https://dog.ceo/api/breeds/$/image/random, 
+	"cat": "https://api.thecatapi.com/vi/images/search", 
+	"Fox": "https://randomfox.ca/floof/", 
+	"bird": "https://some-random-api.ml/img/birb", 
+	"panda": "https://some-random-api.al/img/panda" 
+	"red-panda": "https://some-random-api.ml/img/red_panda' 
+	"raccoon": "https://some-random-api.ml/ing/raccoon 
+	"koala": "https://some-random-api.ml/ing/koala", 
+	"kangaroo": "https://some-random-api.ml/img/kangaroo" 
+	"lizard": "https://nekos.life/api/v2/img/lizard", 
+	"Frog": "http://allaboutfrogs.org/funstuff/randomfrog.html"
+}
