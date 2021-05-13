@@ -49,7 +49,7 @@ def post_animal(ack, say, body):
 
     if command == 'random': #pull random image from API links
         ack()
-        pic_url = retrieve_pic(random.choice(list(URL.keys())))
+        pic_url = retrieve_pic(random.choice(list(URL.keys())), [])
         say(f'{pic_url}')
         return
 
