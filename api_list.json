@@ -1,14 +1,14 @@
 {
 	"dog": "https://dog.ceo/api/breeds/image/random", 
-	"dog-breed": "https://dog.ceo/api/breeds/$/image/random", 
+	"dog-breed": "https://dog.ceo/api/breed/$/images/random", 
 	"cat": "https://api.thecatapi.com/v1/images/search", 
-	"Fox": "https://randomfox.ca/floof/", 
+	"fox": "https://randomfox.ca/floof/", 
 	"bird": "https://some-random-api.ml/img/birb",
 	"panda": "https://some-random-api.al/img/panda", 
 	"red-panda": "https://some-random-api.ml/img/red_panda",
-	"raccoon": "https://some-random-api.ml/img/raccoon" 
+	"raccoon": "https://some-random-api.ml/img/raccoon", 
 	"koala": "https://some-random-api.ml/img/koala", 
-	"kangaroo": "https://some-random-api.ml/img/kangaroo" 
+	"kangaroo": "https://some-random-api.ml/img/kangaroo", 
 	"lizard": "https://nekos.life/api/v2/img/lizard", 
 	"monkey": "https://www.placemonkeys.com/500/350?random"
 }

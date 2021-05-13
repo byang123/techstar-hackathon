@@ -85,12 +85,13 @@ def retrieve_pic(command, command_list): #retrieves animal pic of specified comm
     if not command in URL:
         return command + " is not a valid animal!" 
 
-    if len(command_list < 1):
+    if len(command_list) < 1:
         response = requests.get(URL[command])
     else:
         url1, url2 = URL[command+"-breed"].split("$")
-        req_url = url1 + command_list[1] + url2
-        response = requests.get(URL[req_url])
+        print(command_list)
+        req_url = url1 + command_list[0] + url2
+        response = requests.get(req_url)
 
     if not response.status_code == 200:
         return f"{command} server is not responding :( \n"
@@ -104,8 +105,8 @@ def retrieve_pic(command, command_list): #retrieves animal pic of specified comm
         return f"<{response['image']}|{command}>"
     if command == 'lizard':
         return f"<{response['url']}|{command}>"
-    if command == 'frog':
-        soup = BeautifulSoup()
+    if command == 'monkey':
+        return f"<{response}|{command}>"
     if command in ['bird', 'panda', 'red-panda', 'koala', 'kangaroo', 'raccoon']:
         return f"<{response['link']}|{command}>"
 
