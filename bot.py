@@ -127,9 +127,9 @@ def download_pic(input_url):
     with open(f'{DIR}/{filename}', "wb") as f:
         picture = requests.get(input_url)
         f.write(picture.content)
-    im = Image.open(filename).convert("RGB")
+    im = Image.open(f'{DIR}/{filename}').convert("RGB")
     filename = "monkey.png"
-    im.save(filename, "png")
+    im.save(f'{DIR}/{filename}', "png")
     return filename
 
 
